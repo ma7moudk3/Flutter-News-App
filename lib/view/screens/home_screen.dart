@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
               ),
               PrimaryText(
                 text:
-                    '${DateTime.now().hour} : ${DateTime.now().minute}   | ${DateTime.now().day} / ${DateTime.now().month} / ${DateTime.now().year}',
+                    '${DateTime.now().hour} : ${DateTime.now().minute}   |   ${DateTime.now().day} / ${DateTime.now().month} / ${DateTime.now().year}',
                 textColor: Colors.grey,
                 alignment: Alignment.centerLeft,
               ),
