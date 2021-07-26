@@ -35,7 +35,7 @@ class NewsCubit extends Cubit<NewsStates> {
   void getBuisnessNews() {
     emit(NewsBuisenessLoadingState());
     DioHelper.getData(url: 'v2/top-headlines', query: {
-      'country': 'eg',
+      'country': 'us',
       'category': 'business',
       'apiKey': 'eeccb7b3106a47a1b4e2f993e81f4c90'
     }).then((value) {
@@ -52,7 +52,7 @@ class NewsCubit extends Cubit<NewsStates> {
   void getSportsNews() {
     emit(NewsSportsLoadingState());
     DioHelper.getData(url: 'v2/top-headlines', query: {
-      'country': 'eg',
+      'country': 'us',
       'category': 'sports',
       'apiKey': 'eeccb7b3106a47a1b4e2f993e81f4c90'
     }).then((value) {
@@ -69,7 +69,7 @@ class NewsCubit extends Cubit<NewsStates> {
   void getSienceNews() {
     emit(NewsSicnceLoadingState());
     DioHelper.getData(url: 'v2/top-headlines', query: {
-      'country': 'eg',
+      'country': 'us',
       'category': 'science',
       'apiKey': 'eeccb7b3106a47a1b4e2f993e81f4c90'
     }).then((value) {

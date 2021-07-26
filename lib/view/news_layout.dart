@@ -16,36 +16,33 @@ class NewsLayout extends StatelessWidget {
           listener: (context, state) {},
           builder: (context, state) {
             var cubit = NewsCubit.get(context);
-            return Directionality(
-              textDirection: TextDirection.rtl,
-              child: Scaffold(
-                appBar: AppBar(
-                  title: PrimaryText(
-                    text: 'أخبار مصرية',
-                    fontWeight: FontWeight.bold,
-                    textAlign: TextAlign.start,
-                    alignment: Alignment.centerRight,
-                    fontSize: 28,
-                  ),
-                  actions: [
-                    IconButton(
-                      icon: Icon(
-                        Icons.search,
-                        size: 35,
-                      ),
-                      onPressed: () {},
-                    )
-                  ],
+            return Scaffold(
+              appBar: AppBar(
+                title: PrimaryText(
+                  text: 'News App',
+                  fontWeight: FontWeight.bold,
+                  textAlign: TextAlign.start,
+                  alignment: Alignment.centerLeft,
+                  fontSize: 28,
                 ),
-                bottomNavigationBar: BottomNavigationBar(
-                  items: cubit.bottomItems,
-                  currentIndex: cubit.currentIndex,
-                  onTap: (index) {
-                    cubit.changeBottomNavIndex(index);
-                  },
-                ),
-                body: cubit.screens[cubit.currentIndex],
+                actions: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.search,
+                      size: 35,
+                    ),
+                    onPressed: () {},
+                  )
+                ],
               ),
+              bottomNavigationBar: BottomNavigationBar(
+                items: cubit.bottomItems,
+                currentIndex: cubit.currentIndex,
+                onTap: (index) {
+                  cubit.changeBottomNavIndex(index);
+                },
+              ),
+              body: cubit.screens[cubit.currentIndex],
             );
           }),
     );

@@ -16,22 +16,22 @@ class PrimaryText extends StatelessWidget {
       this.textColor = Colors.black,
       this.fontWeight = FontWeight.normal,
       this.alignment = Alignment.center,
-      this.textAlign = TextAlign.center, this.maxLines = 1})
+      this.textAlign = TextAlign.center,
+      this.maxLines = 1})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: alignment,
-      child: Text(text,
-          textAlign: textAlign,
-          maxLines: maxLines,
-          style: TextStyle(
+        alignment: alignment,
+        child: Text(text,
+            textAlign: textAlign,
+            maxLines: maxLines,
+            style: TextStyle(
               height: 1.5,
               fontSize: fontSize,
-              
               color: textColor,
               fontWeight: fontWeight,
-              fontFamily: "SuisseIntl")),
-    );
+              fontFamily: "GTWalsheim",
+            )));
   }
 }

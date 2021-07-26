@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/cubit/bloc_observer.dart';
 import 'package:news_app/network/dio_helper.dart';
 import 'package:news_app/view/news_layout.dart';
+import 'package:news_app/view/screens/home_screen.dart';
 
 void main() {
   DioHelper.init();
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
                   SystemUiOverlayStyle(statusBarColor: Colors.white)),
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
               type: BottomNavigationBarType.fixed)),
-      home: NewsLayout(),
+      home: HomeScreen(),
     );
   }
 }
