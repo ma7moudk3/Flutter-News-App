@@ -10,13 +10,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // title: PrimaryText(
-        //   text: 'News App',
-        //   fontWeight: FontWeight.bold,
-        //   textAlign: TextAlign.start,
-        //   alignment: Alignment.centerLeft,
-        //   fontSize: 28,
-        // ),
         actions: [
           Container(
               margin: EdgeInsets.only(right: 20),
