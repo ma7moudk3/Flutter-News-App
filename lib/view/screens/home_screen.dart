@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:news_app/constanses/categories_map.dart';
+import 'package:news_app/view/screens/news_screen.dart';
 import 'package:news_app/view/widgets/primaryText.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -11,17 +12,21 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          Container(
-              margin: EdgeInsets.only(right: 20),
-              height: 55,
-              width: 55,
-              decoration: BoxDecoration(
-                  color: Color(0xFFEBF2F8),
-                  borderRadius: BorderRadius.all(Radius.circular(20))),
-              child: Icon(
-                Ionicons.search,
-                size: 29,
-              ))
+          InkWell(
+            onTap: (){
+            },
+            child: Container(
+                margin: EdgeInsets.only(right: 20),
+                height: 55,
+                width: 55,
+                decoration: BoxDecoration(
+                    color: Color(0xFFEBF2F8),
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                child: Icon(
+                  Ionicons.search,
+                  size: 29,
+                )),
+          )
         ],
       ),
       body: SafeArea(
@@ -70,38 +75,52 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                   child: ListView.builder(
                       itemCount: categories.length,
-                      itemBuilder: (context, index) => Container(
-                            width: double.infinity,
-                            margin: EdgeInsets.only(top: 25),
-                            height: 95,
-                            padding: EdgeInsets.symmetric(horizontal: 25),
-                            decoration: BoxDecoration(
-                                color: categories[index]['color'],
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30))),
-                            child: Row(
-                              children: [
-                                Container(
-                                    height: 60,
-                                    width: 60,
-                                    padding: EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.white),
-                                    child: Image.network(
-                                      categories[index]['icon'],
-                                    )),
-                                SizedBox(
-                                  width: 25,
-                                ),
-                                PrimaryText(
-                                  alignment: Alignment.centerLeft,
-                                  text: categories[index]['name'],
-                                  fontWeight: FontWeight.w600,
-                                )
-                              ],
+                      itemBuilder: (c, index) => InkWell(
+                        onTap: (){
+                         // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context ) => SportScreen()));
+                          Navigator.push(context, MaterialPageRoute(builder: (co) {
+                            if(categories[index]['name'] == "Sport"){
+                              return NewsScreen(categoryName: "Sport" ,);
+                            }else if(categories[index]['name'] == "Business"){
+                              return NewsScreen(categoryName: "Business" ,);
+                            }else{
+                              return NewsScreen(categoryName: "Science" ,);
+                            }
+                          } ));
+                        },
+                        child: Container(
+                              width: double.infinity,
+                              margin: EdgeInsets.only(top: 25),
+                              height: 95,
+                              padding: EdgeInsets.symmetric(horizontal: 25),
+                              decoration: BoxDecoration(
+                                  color: categories[index]['color'],
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(30))),
+                              child: Row(
+                                children: [
+                                  Container(
+                                      height: 60,
+                                      width: 60,
+                                      padding: EdgeInsets.all(10),
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Colors.white),
+                                      child: Image.network(
+                                        categories[index]['icon'],
+                                      )),
+                                  SizedBox(
+                                    width: 25,
+                                  ),
+                                  PrimaryText(
+                                    alignment: Alignment.centerLeft,
+                                    text: categories[index]['name'],
+                                    fontWeight: FontWeight.w600,
+                                  )
+                                ],
+                              ),
                             ),
-                          )))
+                      )))
             ],
           ),
         ),

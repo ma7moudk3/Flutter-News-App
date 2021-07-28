@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/cubit/states.dart';
 import 'package:news_app/network/dio_helper.dart';
-import 'package:news_app/view/screens/buisness_screen.dart';
-import 'package:news_app/view/screens/science_screen.dart';
-import 'package:news_app/view/screens/settings_screens.dart';
-import 'package:news_app/view/screens/sport_screen.dart';
 
 class NewsCubit extends Cubit<NewsStates> {
   NewsCubit() : super(NewsInitialState());
@@ -19,12 +15,6 @@ class NewsCubit extends Cubit<NewsStates> {
     BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings')
   ];
 
-  List<Widget> screens = [
-    BuisnessScreen(),
-    SportScreen(),
-    ScienceScreen(),
-    SettingScreens()
-  ];
 
   void changeBottomNavIndex(index) {
     currentIndex = index;
