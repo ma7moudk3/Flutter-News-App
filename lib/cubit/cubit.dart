@@ -56,7 +56,9 @@ class NewsCubit extends Cubit<NewsStates> {
       'category': 'sports',
       'apiKey': 'eeccb7b3106a47a1b4e2f993e81f4c90'
     }).then((value) {
-      sportsNews = value.data['articles'];
+      
+        sportsNews = value.data['articles'];
+      
       print(sportsNews[0]['title']);
       emit(NewsSportsSuccessState());
     }).catchError((error) {

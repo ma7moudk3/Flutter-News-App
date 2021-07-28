@@ -42,7 +42,7 @@ class SportScreen extends StatelessWidget {
                 return Column(
                   children: [
                     Expanded(
-                        flex: 1,
+                        // flex: 1,
                         child: ListView.builder(
                             itemCount: 3,
                             scrollDirection: Axis.horizontal,
@@ -52,7 +52,9 @@ class SportScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(25),
                                     child: Stack(children: [
                                       Image.network(
-                                        list[index]['urlToImage'],
+                                        list[index]['urlToImage'] != null
+                                            ? list[index]['urlToImage']
+                                            : 'https://cdn.dribbble.com/users/247394/screenshots/14369946/media/dbbf39e7622f1a36966581361b34ea38.png?compress=1&resize=1200x900',
                                         fit: BoxFit.cover,
                                         width:
                                             MediaQuery.of(context).size.width -
@@ -64,31 +66,34 @@ class SportScreen extends StatelessWidget {
                                         right: 10,
                                         left: 10,
                                         child: Container(
-                                          padding: EdgeInsets.symmetric(horizontal: 15,vertical: 15),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 15, vertical: 15),
                                           decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(25)
-                                          ),
+                                              color: Colors.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(25)),
                                           child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               PrimaryText(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 20,
                                                 maxLines: 2,
-                                                text:
-                                                    list[index]['title'],
+                                                text: list[index]['title'],
                                                 alignment: Alignment.topLeft,
                                                 textAlign: TextAlign.start,
                                               ),
-                                              SizedBox(height: 15,),
+                                              SizedBox(
+                                                height: 15,
+                                              ),
                                               PrimaryText(
                                                 fontWeight: FontWeight.normal,
                                                 fontSize: 20,
                                                 maxLines: 2,
                                                 textColor: Colors.grey,
-                                                text:
-                                                list[index]['publishedAt'],
+                                                text: list[index]
+                                                    ['publishedAt'],
                                                 alignment: Alignment.topLeft,
                                                 textAlign: TextAlign.start,
                                               ),
@@ -99,12 +104,26 @@ class SportScreen extends StatelessWidget {
                                     ]),
                                   ),
                                 ))),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 15,
+                      ),
+                      child: PrimaryText(
+                        text: 'Trending news',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        maxLines: 2,
+                        textColor: Colors.grey,
+                        alignment: Alignment.topLeft,
+                        textAlign: TextAlign.start,
+                      ),
+                    ),
                     Expanded(
-                        flex: 1,
+                        // flex: 1,
                         child: ArticlesBuilder(
-                          list: list,
-                          state: state,
-                        )),
+                      list: list,
+                      state: state,
+                    )),
                   ],
                 );
               },
