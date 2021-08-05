@@ -9,10 +9,12 @@ class ArticlesBuilder extends StatelessWidget {
     Key key,
     @required this.list,
     this.state,
+    this.isSearch = false,
   }) : super(key: key);
 
   final List list;
   final state;
+  final isSearch;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class ArticlesBuilder extends StatelessWidget {
             itemCount: list.length);
       },
       fallback: (BuildContext context) {
-        return Center(child: CircularProgressIndicator());
+        return isSearch ? Container(): Center(child: CircularProgressIndicator());
       },
     );
   }

@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:news_app/constanses/categories_map.dart';
 import 'package:news_app/view/screens/news_screen.dart';
+import 'package:news_app/view/screens/search_screen.dart';
 import 'package:news_app/view/widgets/primaryText.dart';
 import 'package:ionicons/ionicons.dart';
 
@@ -13,7 +14,9 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         actions: [
           InkWell(
-            onTap: (){
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (c) => SearchScreen()));
             },
             child: Container(
                 margin: EdgeInsets.only(right: 20),
@@ -76,19 +79,27 @@ class HomeScreen extends StatelessWidget {
                   child: ListView.builder(
                       itemCount: categories.length,
                       itemBuilder: (c, index) => InkWell(
-                        onTap: (){
-                         // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context ) => SportScreen()));
-                          Navigator.push(context, MaterialPageRoute(builder: (co) {
-                            if(categories[index]['name'] == "Sport"){
-                              return NewsScreen(categoryName: "Sport" ,);
-                            }else if(categories[index]['name'] == "Business"){
-                              return NewsScreen(categoryName: "Business" ,);
-                            }else{
-                              return NewsScreen(categoryName: "Science" ,);
-                            }
-                          } ));
-                        },
-                        child: Container(
+                            onTap: () {
+                              // Navigator.push(context, MaterialPageRoute(builder: (BuildContext context ) => SportScreen()));
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (co) {
+                                if (categories[index]['name'] == "Sport") {
+                                  return NewsScreen(
+                                    categoryName: "Sport",
+                                  );
+                                } else if (categories[index]['name'] ==
+                                    "Business") {
+                                  return NewsScreen(
+                                    categoryName: "Business",
+                                  );
+                                } else {
+                                  return NewsScreen(
+                                    categoryName: "Science",
+                                  );
+                                }
+                              }));
+                            },
+                            child: Container(
                               width: double.infinity,
                               margin: EdgeInsets.only(top: 25),
                               height: 95,
@@ -120,7 +131,7 @@ class HomeScreen extends StatelessWidget {
                                 ],
                               ),
                             ),
-                      )))
+                          )))
             ],
           ),
         ),

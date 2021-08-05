@@ -15,7 +15,6 @@ class NewsCubit extends Cubit<NewsStates> {
     BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Settings')
   ];
 
-
   void changeBottomNavIndex(index) {
     currentIndex = index;
     emit(NewsBottomNavState());
@@ -46,9 +45,8 @@ class NewsCubit extends Cubit<NewsStates> {
       'category': 'sports',
       'apiKey': 'eeccb7b3106a47a1b4e2f993e81f4c90'
     }).then((value) {
-      
-        sportsNews = value.data['articles'];
-      
+      sportsNews = value.data['articles'];
+
       print(sportsNews[0]['title']);
       emit(NewsSportsSuccessState());
     }).catchError((error) {
@@ -72,5 +70,23 @@ class NewsCubit extends Cubit<NewsStates> {
       print(error);
       emit(NewsSicnceErrorState(error.toString()));
     });
+  }
+
+  List<dynamic> serachList = [];
+  void getSearch(String value) {
+    if (value != null) {
+  emit(NewsSearchLoadingState());
+  DioHelper.getData(url:'v2/everything', query: {
+    'q':value,
+    'apiKey': 'eeccb7b3106a47a1b4e2f993e81f4c90'
+  }).then((value) {
+    serachList = value.data['articles'];
+    print(serachList[0]['title']);
+    emit(NewsSearchSuccessState());
+  }).catchError((error) {
+    print(error);
+    emit(NewsSearchErrorState(error.toString()));
+  });
+}
   }
 }
